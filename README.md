@@ -10,6 +10,19 @@ A retro arcade Snake game for iPhone, built with SwiftUI.
 
 Open `Snake.xcodeproj` and run the **Snake** scheme.
 
+## App Store
+
+Listing copy, age rating, privacy answers, and the 1024 icon: `AppStore/LISTING.md`
+
+| Field | URL |
+| --- | --- |
+| Support | https://sreedharlakshman2.github.io/snake/ |
+| Privacy | https://sreedharlakshman2.github.io/snake/privacy.html |
+| Marketing | https://sreedharlakshman2.github.io |
+| AdMob app-ads.txt | https://sreedharlakshman2.github.io/app-ads.txt |
+
+Support email: sreedharlakshmanan4@gmail.com
+
 ## Ads
 
 Debug builds use Google sample banner and interstitial units so ads always fill.
@@ -22,5 +35,5 @@ Pass `-hideAds` to hide ads for store screenshots.
 
 ## Support
 
-Sreedhar Lakshmanan  
-Sreeo / Sai Laksha Technologies
+Sreeo Studio / Sai Laksha Technologies  
+sreedharlakshmanan4@gmail.com

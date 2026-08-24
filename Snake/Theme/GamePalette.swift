@@ -35,6 +35,10 @@ enum Brand {
     static let studioFull = "Sreeo Studio"
     static let appName = "Snake"
     static let tagline = "A retro arcade classic"
+    static let supportEmail = "sreedharlakshmanan4@gmail.com"
+    static let marketingURL = URL(string: "https://sreedharlakshman2.github.io")!
+    static let supportURL = URL(string: "https://sreedharlakshman2.github.io/snake/")!
+    static let privacyURL = URL(string: "https://sreedharlakshman2.github.io/snake/privacy.html")!
     static let tiles: [Color] = [
         Color(hex: 0x5CE1FF),
         Color(hex: 0xC084FC),

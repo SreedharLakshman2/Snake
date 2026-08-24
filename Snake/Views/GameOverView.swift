@@ -74,6 +74,8 @@ struct GameOverView: View {
         }
         .onAppear {
             ads.noteGameOver()
+            ReviewPrompt.recordGameFinished()
+            ReviewPrompt.askIfAppropriate()
             withAnimation(.easeOut(duration: 0.18)) {
                 appeared = true
             }

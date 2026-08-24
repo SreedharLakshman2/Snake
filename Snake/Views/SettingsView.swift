@@ -31,6 +31,7 @@ struct SettingsView: View {
                             colorCard
                             fruitCard
                             difficultyCard
+                            rateCard
                         }
                         .padding(.horizontal, 22)
                         .padding(.bottom, 12)
@@ -165,6 +166,34 @@ struct SettingsView: View {
             }
         }
         .padding(18)
+        .retroPanel()
+    }
+
+    private var rateCard: some View {
+        Button {
+            HapticManager.shared.buttonPress(enabled: settings.hapticsEnabled)
+            SoundManager.shared.playButton(enabled: settings.soundEnabled)
+            ReviewPrompt.requestReview()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(GamePalette.screenGreen)
+                Text("RATE SNAKE")
+                    .font(.system(size: 16, weight: .bold, design: .monospaced))
+                    .foregroundColor(GamePalette.textLight)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(GamePalette.textLight.opacity(0.35))
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 16)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Rate Snake")
+        .accessibilityHint("Opens Apple's rating card")
         .retroPanel()
     }
 

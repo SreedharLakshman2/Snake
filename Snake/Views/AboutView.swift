@@ -27,6 +27,7 @@ struct AboutView: View {
                             howToCard
                             scoringCard
                             otherAppsCard
+                            rateCard
                             footer
                         }
                         .padding(.horizontal, 18)
@@ -167,6 +168,38 @@ struct AboutView: View {
         .retroPanel()
     }
 
+    private var rateCard: some View {
+        Button {
+            HapticManager.shared.buttonPress(enabled: settings.hapticsEnabled)
+            SoundManager.shared.playButton(enabled: settings.soundEnabled)
+            ReviewPrompt.requestReview()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(GamePalette.screenGreen)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("RATE SNAKE")
+                        .font(.system(size: 16, weight: .bold, design: .monospaced))
+                        .foregroundColor(GamePalette.textLight)
+                    Text("Opens Apple’s rating card")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(GamePalette.textLight.opacity(0.55))
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(GamePalette.textLight.opacity(0.35))
+            }
+            .padding(16)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Rate Snake")
+        .accessibilityHint("Opens Apple's rating card")
+        .retroPanel()
+    }
+
     private var footer: some View {
         VStack(spacing: 4) {
             Text(Brand.studioFull)
@@ -176,6 +209,16 @@ struct AboutView: View {
             Text(Brand.copyrightLine)
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(GamePalette.textLight.opacity(0.5))
+            HStack(spacing: 16) {
+                Link("Support", destination: Brand.supportURL)
+                Text("·")
+                    .foregroundColor(GamePalette.textLight.opacity(0.35))
+                Link("Privacy", destination: Brand.privacyURL)
+            }
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundColor(GamePalette.accentGreen)
+            .padding(.top, 8)
+            .buttonStyle(.plain)
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 6)
