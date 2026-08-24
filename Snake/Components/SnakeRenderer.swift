@@ -4,6 +4,7 @@ struct SnakeRenderer: View {
     let segments: [SnakeSegment]
     let cellSize: CGFloat
     let direction: SnakeDirection
+    var theme: SnakeColorTheme = .classic
 
     var body: some View {
         Canvas { context, _ in
@@ -27,9 +28,9 @@ struct SnakeRenderer: View {
     }
 
     private func fill(for index: Int, count: Int, isHead: Bool) -> Color {
-        if isHead { return GamePalette.snakeHead }
+        if isHead { return theme.head }
         let t = count <= 1 ? 0 : Double(index) / Double(count - 1)
-        return GamePalette.snakeGreen.opacity(1.0 - t * 0.22)
+        return theme.body.opacity(1.0 - t * 0.22)
     }
 
     private func drawEyes(in context: inout GraphicsContext, rect: CGRect) {

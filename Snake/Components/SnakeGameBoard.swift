@@ -11,6 +11,8 @@ struct SnakeGameBoard: View {
     var foodPulse: Bool = false
     var lastEatenFood: GridPosition? = nil
     var particles: [EatParticle] = []
+    var snakeTheme: SnakeColorTheme = .classic
+    var fruitKind: FruitKind = .apple
 
     var boardSize: CGSize {
         CGSize(width: CGFloat(columns) * cellSize, height: CGFloat(rows) * cellSize)
@@ -26,12 +28,12 @@ struct SnakeGameBoard: View {
             }
 
             if let eaten = lastEatenFood, foodPulse {
-                FoodRenderer(position: eaten, cellSize: cellSize, pulse: true)
+                FoodRenderer(position: eaten, cellSize: cellSize, pulse: true, fruit: fruitKind)
             }
-            FoodRenderer(position: food, cellSize: cellSize, pulse: false)
-            SnakeRenderer(segments: snake, cellSize: cellSize, direction: direction)
+            FoodRenderer(position: food, cellSize: cellSize, pulse: false, fruit: fruitKind)
+            SnakeRenderer(segments: snake, cellSize: cellSize, direction: direction, theme: snakeTheme)
 
-            ParticleBurst(particles: particles, cellSize: cellSize)
+            ParticleBurst(particles: particles, cellSize: cellSize, color: fruitKind.glowColor)
             ScanlineOverlay()
             LCDVignette()
         }

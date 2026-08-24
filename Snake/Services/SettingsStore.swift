@@ -19,6 +19,14 @@ final class SettingsStore: ObservableObject {
         didSet { defaults.set(difficulty.rawValue, forKey: Keys.difficulty) }
     }
 
+    @Published var snakeTheme: SnakeColorTheme {
+        didSet { defaults.set(snakeTheme.rawValue, forKey: Keys.snakeTheme) }
+    }
+
+    @Published var fruitKind: FruitKind {
+        didSet { defaults.set(fruitKind.rawValue, forKey: Keys.fruitKind) }
+    }
+
     private let defaults: UserDefaults
 
     private enum Keys {
@@ -26,6 +34,8 @@ final class SettingsStore: ObservableObject {
         static let haptics = "snake.settings.haptics"
         static let grid = "snake.settings.grid"
         static let difficulty = "snake.settings.difficulty"
+        static let snakeTheme = "snake.settings.color"
+        static let fruitKind = "snake.settings.fruit"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -49,6 +59,16 @@ final class SettingsStore: ObservableObject {
             difficulty = value
         } else {
             difficulty = .normal
+        }
+        if let raw = defaults.string(forKey: Keys.snakeTheme), let value = SnakeColorTheme(rawValue: raw) {
+            snakeTheme = value
+        } else {
+            snakeTheme = .classic
+        }
+        if let raw = defaults.string(forKey: Keys.fruitKind), let value = FruitKind(rawValue: raw) {
+            fruitKind = value
+        } else {
+            fruitKind = .apple
         }
     }
 }

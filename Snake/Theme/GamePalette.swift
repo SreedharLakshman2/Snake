@@ -33,8 +33,8 @@ enum Brand {
     static let company = "Sai Laksha Technologies"
     static let studio = "Sreeo"
     static let studioFull = "Sreeo Studio"
-    static let developer = "Sreedhar Lakshmanan"
     static let appName = "Snake"
+    static let tagline = "A retro arcade classic"
     static let tiles: [Color] = [
         Color(hex: 0x5CE1FF),
         Color(hex: 0xC084FC),
@@ -48,5 +48,18 @@ enum Brand {
 
     static var copyrightLine: String {
         "© \(copyrightYear) \(company)"
+    }
+}
+
+extension View {
+    func retroPanel() -> some View {
+        background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(GamePalette.buttonDark)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .stroke(GamePalette.buttonBorder, lineWidth: 1)
+                )
+        )
     }
 }

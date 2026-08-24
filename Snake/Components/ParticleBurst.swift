@@ -10,6 +10,7 @@ struct EatParticle: Identifiable, Equatable {
 struct ParticleBurst: View {
     let particles: [EatParticle]
     let cellSize: CGFloat
+    var color: Color = GamePalette.foodRed
 
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 30.0, paused: particles.isEmpty)) { timeline in
@@ -24,7 +25,7 @@ struct ParticleBurst: View {
                     let size = cellSize * 0.16 * (1 - progress)
                     let rect = CGRect(x: x - size / 2, y: y - size / 2, width: size, height: size)
                     context.opacity = 1 - progress
-                    context.fill(Path(rect), with: .color(GamePalette.foodRed))
+                    context.fill(Path(rect), with: .color(color))
                 }
             }
         }

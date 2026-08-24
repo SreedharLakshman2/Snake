@@ -61,7 +61,9 @@ private struct GamePlayView: View {
                             showGrid: settings.gridEnabled,
                             foodPulse: foodPulse,
                             lastEatenFood: viewModel.lastEatenFood,
-                            particles: particles
+                            particles: particles,
+                            snakeTheme: settings.snakeTheme,
+                            fruitKind: settings.fruitKind
                         )
                         .gesture(swipeGesture)
                     }
