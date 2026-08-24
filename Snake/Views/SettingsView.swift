@@ -179,7 +179,7 @@ struct SettingsView: View {
                 Image(systemName: "star.fill")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(GamePalette.screenGreen)
-                Text("RATE SNAKE")
+                Text("RATE SNAKELET")
                     .font(.system(size: 16, weight: .bold, design: .monospaced))
                     .foregroundColor(GamePalette.textLight)
                 Spacer()
@@ -192,7 +192,7 @@ struct SettingsView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Rate Snake")
+        .accessibilityLabel("Rate Snakelet")
         .accessibilityHint("Opens Apple's rating card")
         .retroPanel()
     }

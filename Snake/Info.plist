@@ -5,7 +5,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-9471606055191983~7219810151</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Ads help keep Snake free. Tracking is optional and used only to show more relevant ads.</string>
+	<string>Ads help keep Snakelet free. Tracking is optional and used only to show more relevant ads.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

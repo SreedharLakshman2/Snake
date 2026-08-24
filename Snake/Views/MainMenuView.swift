@@ -14,7 +14,7 @@ struct MainMenuView: View {
                         Spacer(minLength: 10)
 
                         PixelText(
-                            text: "SNAKE",
+                            text: "SNAKELET",
                             size: 11,
                             weight: .bold,
                             color: GamePalette.screenGreen,

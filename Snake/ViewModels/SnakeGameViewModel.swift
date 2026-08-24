@@ -111,9 +111,57 @@ final class SnakeGameViewModel: ObservableObject {
     }
 
     func handleScenePhase(_ phase: ScenePhase) {
+        if StoreScreenshotLaunch.isActive { return }
         if phase != .active {
             pauseGame()
         }
+    }
+
+    /// Frozen mid-run for App Store posters. Chrome stays visible; the loop does not tick.
+    func prepareStoreScreenshot() {
+        stopLoop()
+        direction = .right
+        pendingDirection = nil
+        score = 120
+        bestScore = 240
+        didWin = false
+        lastEatenFood = nil
+        eatPulse = 0
+        scorePulse = 0
+        snake = [
+            GridPosition(x: 15, y: 7),
+            GridPosition(x: 14, y: 7),
+            GridPosition(x: 13, y: 7),
+            GridPosition(x: 12, y: 7),
+            GridPosition(x: 11, y: 7),
+            GridPosition(x: 10, y: 7),
+            GridPosition(x: 9, y: 7),
+            GridPosition(x: 8, y: 7),
+            GridPosition(x: 8, y: 8),
+            GridPosition(x: 8, y: 9),
+            GridPosition(x: 8, y: 10),
+            GridPosition(x: 9, y: 10),
+            GridPosition(x: 10, y: 10),
+            GridPosition(x: 11, y: 10),
+            GridPosition(x: 12, y: 10),
+            GridPosition(x: 13, y: 10),
+            GridPosition(x: 14, y: 10),
+            GridPosition(x: 15, y: 10),
+            GridPosition(x: 16, y: 10),
+            GridPosition(x: 16, y: 11),
+            GridPosition(x: 16, y: 12),
+            GridPosition(x: 16, y: 13),
+            GridPosition(x: 15, y: 13),
+            GridPosition(x: 14, y: 13),
+            GridPosition(x: 13, y: 13),
+            GridPosition(x: 12, y: 13),
+            GridPosition(x: 11, y: 13),
+            GridPosition(x: 10, y: 13),
+            GridPosition(x: 9, y: 13),
+            GridPosition(x: 8, y: 13)
+        ]
+        food = GridPosition(x: 17, y: 7)
+        state = .playing
     }
 
     // MARK: - Input

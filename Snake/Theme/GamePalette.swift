@@ -33,7 +33,7 @@ enum Brand {
     static let company = "Sai Laksha Technologies"
     static let studio = "Sreeo"
     static let studioFull = "Sreeo Studio"
-    static let appName = "Snake"
+    static let appName = "Snakelet"
     static let tagline = "A retro arcade classic"
     static let supportEmail = "sreedharlakshmanan4@gmail.com"
     static let marketingURL = URL(string: "https://sreedharlakshman2.github.io")!

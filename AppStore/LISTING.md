@@ -1,12 +1,14 @@
-# Snake — App Store listing
+# Snakelet — App Store listing
 
 Paste these fields into [App Store Connect](https://appstoreconnect.apple.com).
+
+The name **Snake** is already taken. Use **Snakelet**. Keep bundle ID `com.sreeo.snake`.
 
 ## Identity
 
 | Field | Value |
 | --- | --- |
-| **Name** (30) | Snake |
+| **Name** (30) | Snakelet |
 | **Subtitle** (30) | Eat, grow, beat your best |
 | **Bundle ID** | `com.sreeo.snake` |
 | **SKU** | `sreeo-snake-001` |
@@ -39,11 +41,11 @@ Do not use a private GitHub repo URL.
 
 ## Promotional text (170)
 
-Classic Snake on a glowing LCD. Eat fruit, grow, and chase a high score. Pick a snake color and fruit, then beat your best.
+Snakelet is classic Snake on a glowing LCD. Eat fruit, grow, and chase a high score. Pick a snake color and fruit, then beat your best.
 
 ## Description
 
-Snake is a retro arcade game from Sreeo Studio. Steer a glowing snake across a 20×20 LCD board. Eat fruit, grow longer, and chase a new high score.
+Snakelet is a retro arcade Snake game from Sreeo Studio. Steer a glowing snake across a 20×20 LCD board. Eat fruit, grow longer, and chase a new high score.
 
 HOW TO PLAY
 • The snake moves on its own. Turn with the D-pad or a swipe.
@@ -58,20 +60,20 @@ MAKE IT YOURS
 • Eight snake colors
 • Eight fruit styles
 • Top 10 high scores on this iPhone
-• Rate Snake from Settings or About
+• Rate Snakelet from Settings or About
 
-Snake is free. A small banner can appear on the menu, and a full-screen ad may show after Game Over. There is no account. Scores stay on this device.
+Snakelet is free. A small banner can appear on the menu, and a full-screen ad may show after Game Over. There is no account. Scores stay on this device.
 
 A Sreeo Studio app
 Sai Laksha Technologies
 
 ## Keywords (100)
 
-snake,arcade,retro,classic,high score,pixel,casual,fruit,lcd,game
+snakelet,snake,arcade,retro,classic,high score,pixel,casual,fruit,lcd
 
 ## What’s New (1.0)
 
-First release. Classic Snake with color and fruit options, high scores, and a retro LCD look.
+First release. Snakelet is classic Snake with color and fruit options, high scores, and a retro LCD look.
 
 ## Age rating questionnaire
 
@@ -128,9 +130,9 @@ python3 Tools/make_icon.py
 
 ## AdMob app-ads.txt
 
-AdMob crawls the **developer website root**, not the Snake folder.
+AdMob crawls the **developer website root**, not the Snakelet folder.
 
-1. In [AdMob](https://apps.admob.com) open **Apps → Snake → App settings → App-ads.txt**.
+1. In [AdMob](https://apps.admob.com) open **Apps → Snakelet → App settings → App-ads.txt**.
 2. Set the developer website to **https://sreedharlakshman2.github.io**
 3. Confirm these files stay at the site root (same publisher line):
    - https://sreedharlakshman2.github.io/app-ads.txt
@@ -152,27 +154,39 @@ Live ad units (Release builds):
 
 ## Screenshots
 
-iPhone only, portrait. Hide ads with the `-hideAds` launch argument.
+iPhone only. Upload **iPhone 6.9"** (1320 × 2868) from `AppStore/Screenshots/iPhone-6.9/`. Skip 6.7" and iPad.
+
+| Order | File | Poster |
+| --- | --- | --- |
+| 1 | `01-play.png` | Eat. Grow. Beat your best. |
+| 2 | `02-grow.png` | Chase the fruit. |
+| 3 | `03-style.png` | Make it yours. |
+
+Rebuild:
+
+```
+python3 Tools/capture_store_screenshots.py
+python3 Tools/compose_store_posters.py
+```
+
+Capture uses `-hideAds` and `-shot menu|game|settings`. Hide ads with `-hideAds` for any extra Simulator shots.
 
 | Size | Typical device | Pixels |
 | --- | --- | --- |
 | 6.9" | iPhone 16 Pro Max | 1320 × 2868 |
-| 6.5" | iPhone 14 Plus / 15 Plus | 1284 × 2778 |
-
-Capture: menu, play, game over, settings (color + fruit), high scores, About.
 
 ## Review notes
 
 Paste into **App Review Information → Notes**.
 
-Snake is a single-player arcade game. There is no account, no login, no in-app purchase, and no user-generated content. High scores stay on the device.
+Snakelet is a single-player arcade Snake game. There is no account, no login, no in-app purchase, and no user-generated content. High scores stay on the device. The App Store name is Snakelet because Snake is already in use.
 
 How to review
 1. Launch the app. After the Sreeo splash, the menu appears.
 2. If iOS shows App Tracking Transparency, Allow or Ask App Not to Track. Ads load either way.
 3. Tap Play. Steer with the on-screen D-pad or a swipe. Eat fruit, then hit a wall or wait for Game Over.
 4. Open Settings and change snake color and fruit. Open High Score and About.
-5. Settings and About include Rate Snake. That uses Apple's in-app review dialog (Apple limits how often it can appear). After a few finished runs the app may also ask to rate on its own.
+5. Settings and About include Rate Snakelet. That uses Apple's in-app review dialog (Apple limits how often it can appear). After a few finished runs the app may also ask to rate on its own.
 6. A Google banner can appear on menu, scores, settings, and About. An interstitial may appear after Game Over.
 
 Contact: sreedharlakshmanan4@gmail.com
@@ -186,4 +200,4 @@ Contact: sreedharlakshmanan4@gmail.com
 5. App Privacy: Device ID + Advertising Data for AdMob; tracking only if the user allows ATT
 6. 1024 icon is RGB with no alpha (`AppStore/icons/AppIcon-1024.png`)
 7. AdMob developer website is https://sreedharlakshman2.github.io so app-ads.txt verifies
-8. Archive a **Release** build in Xcode and upload with Organizer or Transporter
+8. Create the App Store Connect record as **Snakelet** (not Snake), then archive a **Release** build and upload to that existing app

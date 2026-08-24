@@ -70,5 +70,17 @@ final class SettingsStore: ObservableObject {
         } else {
             fruitKind = .apple
         }
+        if StoreScreenshotLaunch.isActive {
+            applyStoreScreenshotDefaults()
+        }
+    }
+
+    func applyStoreScreenshotDefaults() {
+        soundEnabled = false
+        hapticsEnabled = false
+        gridEnabled = true
+        difficulty = .normal
+        snakeTheme = .classic
+        fruitKind = .apple
     }
 }

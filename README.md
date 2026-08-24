@@ -1,6 +1,6 @@
-# Snake
+# Snakelet
 
-A retro arcade Snake game for iPhone, built with SwiftUI.
+A retro arcade Snake game for iPhone, built with SwiftUI. The App Store name is **Snakelet** because Snake is already taken. The Xcode project and bundle ID stay `Snake` / `com.sreeo.snake`.
 
 ## Requirements
 
@@ -27,7 +27,7 @@ Support email: sreedharlakshmanan4@gmail.com
 
 Debug builds use Google sample banner and interstitial units so ads always fill.
 
-Release builds use the Snake AdMob app ID in `Info.plist` (`GADApplicationIdentifier`). Banner and interstitial units for bundle `com.sreeo.snake` are in `Snake/Ads/AdConfig.swift`.
+Release builds use the Snakelet AdMob app ID in `Info.plist` (`GADApplicationIdentifier`). Banner and interstitial units for bundle `com.sreeo.snake` are in `Snake/Ads/AdConfig.swift`.
 
 Banners sit on menu, high scores, settings, and about. An interstitial can appear after Game Over once every two games, with a cooldown.
 

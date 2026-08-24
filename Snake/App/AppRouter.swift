@@ -12,7 +12,20 @@ enum AppScreen: Equatable {
 
 @MainActor
 final class AppRouter: ObservableObject {
-    @Published var screen: AppScreen = .splash
+    @Published var screen: AppScreen
+
+    init() {
+        switch StoreScreenshotLaunch.shot {
+        case "game":
+            screen = .game
+        case "settings":
+            screen = .settings
+        case "menu", "play":
+            screen = .menu
+        default:
+            screen = .splash
+        }
+    }
 
     func showMenu() {
         screen = .menu

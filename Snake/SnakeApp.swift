@@ -17,10 +17,16 @@ struct SnakeApp: App {
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .onAppear {
                     SoundManager.shared.prepare()
+                    if StoreScreenshotLaunch.isActive {
+                        settings.applyStoreScreenshotDefaults()
+                        ads.bootstrap()
+                        return
+                    }
                     ReviewPrompt.recordFirstUseIfNeeded()
                     ReviewPrompt.noteBecameActive()
                 }
                 .onChange(of: scenePhase) { phase in
+                    if StoreScreenshotLaunch.isActive { return }
                     switch phase {
                     case .active:
                         ReviewPrompt.noteBecameActive()

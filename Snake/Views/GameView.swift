@@ -83,7 +83,13 @@ private struct GamePlayView: View {
 
             overlays
         }
-        .onAppear { viewModel.startGame() }
+        .onAppear {
+            if StoreScreenshotLaunch.shot == "game" {
+                viewModel.prepareStoreScreenshot()
+            } else {
+                viewModel.startGame()
+            }
+        }
         .onDisappear { viewModel.stopLoop() }
         .onChange(of: scenePhase) { phase in
             viewModel.handleScenePhase(phase)
