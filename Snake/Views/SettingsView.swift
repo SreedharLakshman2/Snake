@@ -5,12 +5,14 @@ struct SettingsView: View {
     @EnvironmentObject private var settings: SettingsStore
 
     var body: some View {
+        AdScreenLayout {
         ZStack {
             RetroBackdrop()
 
             VStack(spacing: 24) {
-                PixelText(text: "SETTINGS", size: 7, weight: .bold, color: GamePalette.screenGreen, glow: true)
-                    .padding(.top, 18)
+                FittedPixelText(text: "SETTINGS", preferredSize: 6, weight: .bold, color: GamePalette.screenGreen, glow: true)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
 
                 VStack(spacing: 0) {
                     SettingsToggleRow(title: "Sound", isOn: $settings.soundEnabled)
@@ -55,8 +57,9 @@ struct SettingsView: View {
 
                 PixelButton(title: "BACK", action: router.showMenu)
                     .padding(.horizontal, 28)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 8)
             }
+        }
         }
     }
 

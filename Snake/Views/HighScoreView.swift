@@ -6,12 +6,14 @@ struct HighScoreView: View {
     @State private var lastID: UUID?
 
     var body: some View {
+        AdScreenLayout {
         ZStack {
             RetroBackdrop()
 
             VStack(spacing: 24) {
-                PixelText(text: "HIGH SCORE", size: 7, weight: .bold, color: GamePalette.screenGreen, glow: true)
-                    .padding(.top, 18)
+                FittedPixelText(text: "HIGH SCORE", preferredSize: 6, weight: .bold, color: GamePalette.screenGreen, glow: true)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
 
                 VStack(spacing: 0) {
                     if scores.isEmpty {
@@ -50,8 +52,9 @@ struct HighScoreView: View {
 
                 PixelButton(title: "BACK", action: router.showMenu)
                     .padding(.horizontal, 28)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 8)
             }
+        }
         }
         .onAppear {
             let manager = HighScoreManager.shared

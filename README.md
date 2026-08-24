@@ -2,8 +2,6 @@
 
 A retro arcade Snake game for iPhone, built with SwiftUI.
 
-Classic Nokia-era gameplay — continuous movement, growing when you eat, and a game over on wall or self collision — with an original green LCD look. No Nokia assets or logos are used.
-
 ## Requirements
 
 - Xcode 16 or later
@@ -12,17 +10,17 @@ Classic Nokia-era gameplay — continuous movement, growing when you eat, and a 
 
 Open `Snake.xcodeproj` and run the **Snake** scheme.
 
-## Features
+## Ads
 
-- Splash, main menu, play, pause, game over, high scores, settings, and about
-- 20×20 grid that sizes itself to the screen
-- D-pad plus swipe controls
-- Difficulty (Easy / Normal / Hard)
-- Sound, haptics, and grid toggles
-- Top 10 scores stored locally in UserDefaults
-- Works fully offline with no third-party libraries
+Debug builds use Google sample banner and interstitial units so ads always fill.
+
+Release builds use the Snake AdMob app ID in `Info.plist` (`GADApplicationIdentifier`). Banner and interstitial units for bundle `com.sreeo.snake` are in `Snake/Ads/AdConfig.swift`.
+
+Banners sit on menu, high scores, settings, and about. An interstitial can appear after Game Over once every two games, with a cooldown.
+
+Pass `-hideAds` to hide ads for store screenshots.
 
 ## Support
 
-Sai Laksha Technologies  
-sreedharlakshmanan4@gmail.com
+Sreedhar Lakshmanan  
+Sreeo / Sai Laksha Technologies

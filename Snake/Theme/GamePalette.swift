@@ -16,7 +16,7 @@ enum GamePalette {
     static let snakeHead = Color(hex: 0xD4FFB0)
     static let snakeShadow = Color(hex: 0x3D8A2E)
     static let gridDot = Color(hex: 0xA2F17D).opacity(0.16)
-    static let overlayScrim = Color.black.opacity(0.72)
+    static let overlayScrim = Color.black.opacity(0.88)
     static let danger = Color(hex: 0xFF4D4D)
 }
 
@@ -32,10 +32,15 @@ extension Color {
 enum Brand {
     static let company = "Sai Laksha Technologies"
     static let studio = "Sreeo"
+    static let studioFull = "Sreeo Studio"
+    static let developer = "Sreedhar Lakshmanan"
     static let appName = "Snake"
-    static let tagline = "A retro arcade experience inspired by classic mobile gaming."
-    static let supportEmail = "sreedharlakshmanan4@gmail.com"
-    static let version = "1.0"
+    static let tiles: [Color] = [
+        Color(hex: 0x5CE1FF),
+        Color(hex: 0xC084FC),
+        Color(hex: 0xFB7185),
+        Color(hex: 0xFBBF24)
+    ]
 
     static var copyrightYear: Int {
         Calendar.current.component(.year, from: .now)

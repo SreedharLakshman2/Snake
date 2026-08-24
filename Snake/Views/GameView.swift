@@ -28,9 +28,58 @@ private struct GamePlayView: View {
         )
     }
 
+    private var showsChrome: Bool {
+        viewModel.state == .playing
+    }
+
     var body: some View {
-        GeometryReader { geo in
-            playfield(size: geo.size)
+        ZStack {
+            RetroBackdrop()
+
+            VStack(spacing: 10) {
+                ScoreDisplay(
+                    score: viewModel.score,
+                    bestScore: viewModel.bestScore,
+                    pulse: scorePulse,
+                    onPause: { viewModel.pauseGame() }
+                )
+                .padding(.horizontal, 16)
+                .opacity(showsChrome ? 1 : 0)
+                .allowsHitTesting(showsChrome)
+                .accessibilityHidden(!showsChrome)
+
+                GeometryReader { geo in
+                    let cell = cellSize(in: geo.size)
+                    LCDBezel {
+                        SnakeGameBoard(
+                            columns: viewModel.columns,
+                            rows: viewModel.rows,
+                            cellSize: cell,
+                            snake: viewModel.segments,
+                            food: viewModel.food,
+                            direction: viewModel.direction,
+                            showGrid: settings.gridEnabled,
+                            foodPulse: foodPulse,
+                            lastEatenFood: viewModel.lastEatenFood,
+                            particles: particles
+                        )
+                        .gesture(swipeGesture)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                }
+
+                DirectionPad(buttonSize: 56) { direction in
+                    viewModel.changeDirection(direction)
+                }
+                .opacity(showsChrome ? 1 : 0)
+                .allowsHitTesting(showsChrome)
+                .accessibilityHidden(!showsChrome)
+            }
+            .padding(.top, 4)
+            .padding(.bottom, 6)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            overlays
         }
         .onAppear { viewModel.startGame() }
         .onDisappear { viewModel.stopLoop() }
@@ -39,56 +88,6 @@ private struct GamePlayView: View {
         }
         .onChange(of: viewModel.eatPulse) { pulse in
             handleEat(pulse)
-        }
-    }
-
-    private func playfield(size: CGSize) -> some View {
-        let metrics = layout(in: size)
-        return ZStack {
-            RetroBackdrop()
-            gameColumn(metrics: metrics)
-            overlays
-        }
-    }
-
-    private func gameColumn(metrics: BoardMetrics) -> some View {
-        VStack(spacing: 12) {
-            ScoreDisplay(
-                score: viewModel.score,
-                bestScore: viewModel.bestScore,
-                pulse: scorePulse,
-                onPause: { viewModel.pauseGame() }
-            )
-            .padding(.horizontal, 20)
-            .padding(.top, 8)
-
-            Spacer(minLength: 0)
-
-            LCDBezel {
-                SnakeGameBoard(
-                    columns: viewModel.columns,
-                    rows: viewModel.rows,
-                    cellSize: metrics.cellSize,
-                    snake: viewModel.segments,
-                    food: viewModel.food,
-                    direction: viewModel.direction,
-                    showGrid: settings.gridEnabled,
-                    foodPulse: foodPulse,
-                    lastEatenFood: viewModel.lastEatenFood,
-                    particles: particles
-                )
-                .gesture(swipeGesture)
-            }
-
-            Spacer(minLength: 0)
-
-            DirectionPad { direction in
-                viewModel.changeDirection(direction)
-            }
-            .scaleEffect(metrics.padScale)
-            .opacity(viewModel.state == .playing ? 1 : 0.45)
-            .allowsHitTesting(viewModel.state == .playing)
-            .padding(.bottom, 8)
         }
     }
 
@@ -126,15 +125,10 @@ private struct GamePlayView: View {
             }
     }
 
-    private func layout(in size: CGSize) -> BoardMetrics {
-        let compact = size.height < 720
-        let padScale: CGFloat = compact ? 0.86 : 1
-        let padHeight: CGFloat = compact ? 236 : 276
-        let availableWidth = max(160, size.width - 40)
-        let availableHeight = max(160, size.height - 86 - padHeight)
-        let boardSide = min(availableWidth, availableHeight)
-        let cell = floor(boardSide / CGFloat(viewModel.columns))
-        return BoardMetrics(cellSize: max(8, cell), padScale: padScale)
+    private func cellSize(in size: CGSize) -> CGFloat {
+        let bezel: CGFloat = 22
+        let side = min(size.width, size.height) - bezel
+        return max(8, floor(side / CGFloat(viewModel.columns)))
     }
 
     private func handleEat(_ pulse: Int) {
@@ -168,9 +162,4 @@ private struct GamePlayView: View {
         viewModel.stopLoop()
         router.showMenu()
     }
-}
-
-private struct BoardMetrics {
-    let cellSize: CGFloat
-    let padScale: CGFloat
 }

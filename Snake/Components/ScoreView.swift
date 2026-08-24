@@ -7,12 +7,11 @@ struct ScoreDisplay: View {
     var onPause: (() -> Void)? = nil
 
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center, spacing: 8) {
             scoreBlock(title: "SCORE", value: score, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .scaleEffect(pulse ? 1.08 : 1)
                 .animation(.spring(response: 0.22, dampingFraction: 0.6), value: pulse)
-
-            Spacer()
 
             if let onPause {
                 Button(action: onPause) {
@@ -34,18 +33,16 @@ struct ScoreDisplay: View {
                 .accessibilityHint("Pauses the current game")
             }
 
-            Spacer()
-
             scoreBlock(title: "BEST", value: bestScore, alignment: .trailing)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 
     private func scoreBlock(title: String, value: Int, alignment: HorizontalAlignment) -> some View {
-        VStack(alignment: alignment, spacing: 6) {
-            PixelText(text: title, size: 4, color: GamePalette.screenGreen.opacity(0.7))
-            PixelText(text: String(value), size: 7, weight: .bold, color: GamePalette.screenGreen, glow: true)
+        VStack(alignment: alignment, spacing: 5) {
+            PixelText(text: title, size: 3, color: GamePalette.screenGreen.opacity(0.7))
+            PixelText(text: String(value), size: 6, weight: .bold, color: GamePalette.screenGreen, glow: true)
         }
-        .frame(minWidth: 86, alignment: alignment == .leading ? .leading : .trailing)
     }
 }
 

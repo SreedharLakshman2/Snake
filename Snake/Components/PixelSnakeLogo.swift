@@ -62,19 +62,39 @@ struct RetroBackdrop: View {
         ZStack {
             GamePalette.background
             RadialGradient(
-                colors: [GamePalette.accentGreen.opacity(0.08), .clear],
+                colors: [
+                    GamePalette.accentGreen.opacity(0.16),
+                    GamePalette.screenGreen.opacity(0.05),
+                    .clear
+                ],
                 center: .center,
-                startRadius: 20,
-                endRadius: 320
+                startRadius: 12,
+                endRadius: 360
             )
+            TimelineView(.animation(minimumInterval: 1.0 / 12.0, paused: false)) { timeline in
+                let phase = timeline.date.timeIntervalSinceReferenceDate
+                Canvas { context, size in
+                    var y = CGFloat(phase.truncatingRemainder(dividingBy: 4))
+                    while y < size.height {
+                        context.fill(
+                            Path(CGRect(x: 0, y: y, width: size.width, height: 1)),
+                            with: .color(Color.white.opacity(0.025))
+                        )
+                        y += 4
+                    }
+                }
+            }
+            .allowsHitTesting(false)
             VStack {
                 Spacer()
-                Rectangle()
-                    .fill(GamePalette.screenGreen.opacity(0.04))
-                    .frame(height: 1)
-                    .padding(.bottom, 24)
+                LinearGradient(
+                    colors: [.clear, Color.black.opacity(0.35)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(height: 120)
             }
         }
-        .ignoresSafeArea()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

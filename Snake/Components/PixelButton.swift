@@ -38,7 +38,7 @@ struct PixelButton: View {
                     .stroke(border, lineWidth: isPrimary ? 0 : 1)
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .shadow(color: isPrimary && !isDisabled ? GamePalette.accentGreen.opacity(0.28) : .clear, radius: 12, y: 0)
+            .shadow(color: isPrimary && !isDisabled ? GamePalette.accentGreen.opacity(0.34) : .clear, radius: 14, y: 0)
         }
         .buttonStyle(PressablePixelStyle())
         .disabled(isDisabled)

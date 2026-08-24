@@ -1,19 +1,21 @@
 import SwiftUI
 
 struct DirectionPad: View {
+    var buttonSize: CGFloat = 56
     let onDirection: (SnakeDirection) -> Void
 
     var body: some View {
-        VStack(spacing: 10) {
-            DirectionButton(direction: .up, action: { onDirection(.up) })
-            HStack(spacing: 10) {
-                DirectionButton(direction: .left, action: { onDirection(.left) })
-                DPadNucleus()
-                DirectionButton(direction: .right, action: { onDirection(.right) })
+        VStack(spacing: 8) {
+            DirectionButton(direction: .up, size: buttonSize, action: { onDirection(.up) })
+            HStack(spacing: 8) {
+                DirectionButton(direction: .left, size: buttonSize, action: { onDirection(.left) })
+                DPadNucleus(size: buttonSize)
+                DirectionButton(direction: .right, size: buttonSize, action: { onDirection(.right) })
             }
-            DirectionButton(direction: .down, action: { onDirection(.down) })
+            DirectionButton(direction: .down, size: buttonSize, action: { onDirection(.down) })
         }
-        .padding(8)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Direction pad")
     }
@@ -21,23 +23,24 @@ struct DirectionPad: View {
 
 struct DirectionButton: View {
     let direction: SnakeDirection
+    var size: CGFloat = 56
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             ZStack {
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(GamePalette.buttonDark)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
                             .stroke(GamePalette.buttonBorder, lineWidth: 1.5)
                     )
 
                 PixelArrow(direction: direction)
                     .fill(GamePalette.screenGreen)
-                    .frame(width: 18, height: 18)
+                    .frame(width: 16, height: 16)
             }
-            .frame(width: 72, height: 72)
+            .frame(width: size, height: size)
             .contentShape(Rectangle())
         }
         .buttonStyle(DirectionPressStyle())
@@ -65,6 +68,8 @@ private struct DirectionPressStyle: ButtonStyle {
 }
 
 private struct DPadNucleus: View {
+    var size: CGFloat = 56
+
     var body: some View {
         ZStack {
             Circle()
@@ -72,10 +77,10 @@ private struct DPadNucleus: View {
                 .overlay(Circle().stroke(GamePalette.buttonBorder, lineWidth: 1))
             Circle()
                 .fill(GamePalette.accentGreen.opacity(0.85))
-                .frame(width: 14, height: 14)
+                .frame(width: 12, height: 12)
                 .shadow(color: GamePalette.accentGreen.opacity(0.6), radius: 6)
         }
-        .frame(width: 72, height: 72)
+        .frame(width: size, height: size)
         .accessibilityHidden(true)
     }
 }

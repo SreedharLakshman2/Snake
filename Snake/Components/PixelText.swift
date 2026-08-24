@@ -57,6 +57,34 @@ private struct PixelGlyph: View {
     }
 }
 
+struct FittedPixelText: View {
+    let text: String
+    var preferredSize: CGFloat = 7
+    var weight: Font.Weight = .regular
+    var color: Color = GamePalette.screenGreen
+    var glow: Bool = false
+
+    var body: some View {
+        Color.clear
+            .frame(maxWidth: .infinity)
+            .frame(height: preferredSize * 7)
+            .overlay(
+                GeometryReader { geo in
+                    PixelText(
+                        text: text,
+                        size: preferredSize,
+                        weight: weight,
+                        color: color,
+                        glow: glow,
+                        maxWidth: geo.size.width
+                    )
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                }
+            )
+            .accessibilityLabel(text)
+    }
+}
+
 enum PixelFont {
     static func columnCount(for text: String) -> Int {
         guard !text.isEmpty else { return 0 }
