@@ -177,18 +177,50 @@ Capture uses `-hideAds` and `-shot menu|game|settings`. Hide ads with `-hideAds`
 
 ## Review notes
 
-Paste into **App Review Information → Notes**.
+Paste into **App Review Information → Notes**, and into the Resolution Center reply if Apple asks Guideline 2.1 Information Needed.
 
-Snakelet is a single-player arcade Snake game. There is no account, no login, no in-app purchase, and no user-generated content. High scores stay on the device. The App Store name is Snakelet because Snake is already in use.
+Thank you for reviewing Snakelet 1.0.
 
-How to review
-1. Launch the app. After the Sreeo splash, the menu appears.
-2. If iOS shows App Tracking Transparency, Allow or Ask App Not to Track. Ads load either way.
-3. Tap Play. Steer with the on-screen D-pad or a swipe. Eat fruit, then hit a wall or wait for Game Over.
-4. Open Settings and change snake color and fruit. Open High Score and About.
-5. Settings and About include Rate Snakelet. That uses Apple's in-app review dialog (Apple limits how often it can appear). After a few finished runs the app may also ask to rate on its own.
-6. A Google banner can appear on menu, scores, settings, and About. An interstitial may appear after Game Over.
+Snakelet is a single-player arcade Snake game for iPhone. There is no account, no login, no in-app purchase, no user-generated content, and no paid unlocks. High scores stay on this device. The App Store name is Snakelet because Snake is already in use. Bundle ID is com.sreeo.snake.
 
+1. Screen recording
+Please see the attached recording from a physical iPhone. It shows: launch and Sreeo splash, App Tracking Transparency (Allow or Ask App Not to Track — both work), Play, steering with the D-pad or a swipe, eating fruit, Game Over, Settings (snake color and fruit), Rate Snakelet, High Score, and About. There is no login, no paid content, no user-generated content, and no extra permission prompts beyond optional tracking for ads.
+
+2. Devices and OS tested before submission
+- iPhone 16 Pro Max Simulator, iOS 18.2
+- Please add your physical iPhone model and iOS version here (required by App Review).
+
+3. Purpose and audience
+Snakelet is a casual retro arcade game. The player steers a snake on a 20×20 LCD board, eats fruit, grows, and tries to beat a local high score. It is for a general audience, age rating 4+, not Made for Kids.
+
+4. How to use the main features
+No credentials or sample files are required.
+- Launch the app. After the splash, tap Play.
+- If iOS shows App Tracking Transparency, choose Allow or Ask App Not to Track. Ads still load either way.
+- Steer with the on-screen D-pad or a swipe. You cannot reverse into yourself.
+- Eat fruit to score 10 points. The snake speeds up after every bite.
+- Hit a wall or your tail for Game Over. Fill the board to win.
+- Settings: sound, haptics, grid, Easy/Normal/Hard, eight snake colors, eight fruits.
+- High Score keeps the top 10 runs on this iPhone.
+- About has other apps, Support, Privacy, and Rate Snakelet (Apple’s in-app review dialog; Apple limits how often it appears).
+- A Google banner can appear on menu, scores, settings, and About. An interstitial may appear after Game Over.
+
+5. External services
+- Apple StoreKit — in-app rating prompt only. We do not receive the star rating.
+- Google AdMob — banner and interstitial ads so the app can stay free.
+  App ID ca-app-pub-9471606055191983~7219810151
+  Banner ca-app-pub-9471606055191983/4299072695
+  Interstitial ca-app-pub-9471606055191983/8860194887
+No authentication, payments, cloud backend, analytics SDK of our own, or AI services.
+
+6. Regional differences
+The app works the same in every region. There is no region-locked content.
+
+7. Regulated industry / third-party material
+Not applicable. Original game. No healthcare, finance, or licensed third-party IP.
+
+Support: https://sreedharlakshman2.github.io/snake/
+Privacy: https://sreedharlakshman2.github.io/snake/privacy.html
 Contact: sreedharlakshmanan4@gmail.com
 
 ## Submit checklist
